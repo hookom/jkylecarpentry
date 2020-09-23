@@ -1,69 +1,53 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Typography,
-  Grid, Menu, MenuItem } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { AppBar, Toolbar, Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
+  toolbar: {
+    backgroundColor: 'rgb(200,200,200)',
+    minHeight: '90px',
+    paddingTop: 'auto',
+    paddingBottom: 'auto',
+  },
   siteLogo: {
     width: '4em',
     cursor: 'pointer',
     paddingTop: '5px',
     paddingBottom: '5px',
   },
-  headerItem: {
-    marginTop: 'auto',
-    marginBottom: 'auto',
-  }
 }));
 
 const Header = () => {
-  const history = useHistory();
   const classes = useStyles();
-  const [appMenuEl, setAppMenuEl] = useState(null);
-
-  const linkClicked = (newRoute) => {
-    setAppMenuEl(null);
-    history.push(newRoute);
-  };
 
   return (
-    <AppBar position='sticky' color='primary'>
-      <Toolbar>
-        <Grid container direction='row' justify='space-between' alignItems='baseline'>
-          <img
-            src={logo}
-            alt='logo'
-            onClick={() => linkClicked('/')}
-            className={`${classes.siteLogo} ${classes.headerItem}`} />
-          <Typography variant='h4' className={classes.headerItem}>
-            JKyle Carpentry
-          </Typography>
-          <IconButton
-            onClick={event => setAppMenuEl(event.currentTarget)}
-            color='inherit'
-            aria-label='menu'
-            className={classes.headerItem}>
-            <MenuIcon />
-          </IconButton>
+    <AppBar position='sticky'>
+      <Toolbar className={classes.toolbar}>
+        <Grid container direction='row' justify='space-evenly'>
+          <Grid item xs={4}>
+            <RouterLink to='/'>
+              <img
+                src={logo}
+                alt='logo'
+                className={classes.siteLogo}
+              />
+            </RouterLink>
+          </Grid>
+          <Grid container item xs={5} direction='row' justify='space-evenly'>
+            <Button color="primary" component={RouterLink} to="/services">
+              Services
+            </Button>
+            <Button color="primary" component={RouterLink} to="/gallery">
+              Gallery
+            </Button>
+            <Button color="primary" component={RouterLink} to="/contact">
+              Contact
+            </Button>
+          </Grid>
         </Grid>
-        <Menu id='appMenu'
-          transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-          elevation={0}
-          getContentAnchorEl={null}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
-          anchorEl={appMenuEl}
-          keepMounted
-          open={Boolean(appMenuEl)}
-          onClose={() => setAppMenuEl(null)}
-        >
-          <MenuItem onClick={() => linkClicked('/')} >Home</MenuItem>
-          <MenuItem onClick={() => linkClicked('/info')} >Info</MenuItem>
-          <MenuItem onClick={() => linkClicked('/contact')} >Contact</MenuItem>
-        </Menu>
       </Toolbar>
     </AppBar>
   );
