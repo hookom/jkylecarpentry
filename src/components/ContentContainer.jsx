@@ -2,11 +2,12 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Home from './Home';
+import Contact from './Contact';
 
 const useStyles = makeStyles(() => ({
   content: {
     height: 'calc(100vh - 90px)',
-    backgroundColor: 'rgb(200,200,200)',
+    fontFamily: 'PlayfairRegular',
   },
 }));
 
@@ -29,7 +30,7 @@ const SentinelContainer = () => {
         </Route>
 
         <Route exact path='/contact'>
-          <div>contact</div>
+          <Contact />
         </Route>
       </Switch>
     </div>
