@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
-import carpentryBackdrop from '../assets/carpentryBackdrop.jpg';
+import carpentryBackdrop from '../../assets/carpentryBackdrop.jpg';
 
 const useStyles = makeStyles(() => ({
   mainImage: {

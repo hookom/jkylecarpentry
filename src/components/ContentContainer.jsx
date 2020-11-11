@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Home from './Home';
-import Contact from './Contact';
+import Home from './Home/Home';
+import Contact from './Contact/Contact';
+import Gallery from './Gallery/Gallery';
 
 const useStyles = makeStyles(() => ({
   content: {
@@ -26,7 +27,7 @@ const SentinelContainer = () => {
         </Route>
 
         <Route exact path='/gallery'>
-          <div>gallery</div>
+          <Gallery />
         </Route>
 
         <Route exact path='/contact'>

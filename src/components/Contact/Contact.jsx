@@ -5,10 +5,11 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+import { openLink } from '../../lib/utils';
 
-const facebookUrl = 'https://www.facebook.com';
-const instagramUrl = 'https://www.instagram.com';
-const linkedInUrl = 'https://www.instagram.com';
+const facebookUrl = 'https://www.facebook.com/jkylecarpentry';
+const instagramUrl = 'https://www.instagram.com/jkyle_carpentry';
+const linkedInUrl = 'https://linkedin.com';
 
 const useStyles = makeStyles(() => ({
   content: {
@@ -24,10 +25,6 @@ const useStyles = makeStyles(() => ({
 
 const Contact = () => {
   const classes = useStyles();
-
-  const openLink = (url) => {
-    window.open(url, '_blank');
-  }
 
   return (
     <Grid
