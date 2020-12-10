@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Grid, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Grid, Button,
+  Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
 import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
   toolbar: {
-    backgroundColor: 'rgb(200,200,200)',
+    backgroundColor: 'rgb(230,230,230)',
     minHeight: '90px',
     paddingTop: 'auto',
     paddingBottom: 'auto',
@@ -18,6 +18,12 @@ const useStyles = makeStyles(() => ({
     paddingTop: '5px',
     paddingBottom: '5px',
   },
+  tab: {
+    color: '#000',
+    '&:hover': {
+      borderBottom: '1px solid #000'
+    }
+  }
 }));
 
 const Header = () => {
@@ -37,14 +43,14 @@ const Header = () => {
             </RouterLink>
           </Grid>
           <Grid container item xs={5} direction='row' justify='space-evenly'>
-            <Button color="primary" component={RouterLink} to="/services">
-              Services
+            <Button color='primary' component={RouterLink} to='/services'>
+              <Typography variant='h6' className={classes.tab}>Services</Typography>
             </Button>
-            <Button color="primary" component={RouterLink} to="/gallery">
-              Gallery
+            <Button color='primary' component={RouterLink} to='/gallery'>
+              <Typography variant='h6' className={classes.tab}>Gallery</Typography>
             </Button>
-            <Button color="primary" component={RouterLink} to="/contact">
-              Contact
+            <Button color='primary' component={RouterLink} to='/contact'>
+              <Typography variant='h6' className={classes.tab}>Contact</Typography>
             </Button>
           </Grid>
         </Grid>
