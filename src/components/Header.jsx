@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { AppBar, Toolbar, Grid, Button, Typography,
   IconButton, Menu } from '@material-ui/core';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import logo from '../assets/logo.png';
@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <AppBar position='sticky'>
       <Toolbar className={classes.toolbar}>
-        <Grid container direction='row' justify='space-evenly'>
+        <Grid container direction='row' justify='space-evenly' alignItems='center'>
           <Grid item xs={4}>
             <RouterLink to='/'>
               <img
@@ -47,9 +47,9 @@ const Header = () => {
             </RouterLink>
           </Grid>
           { isSmol ?
-            <React.Fragment>
+            <Grid item xs={1}>
               <IconButton onClick={event => setMenuEl(event.currentTarget)}>
-                <MoreVertIcon />
+                <MenuOpenIcon fontSize='large' />
               </IconButton>
               <Menu
                 anchorEl={menuEl}
@@ -59,7 +59,7 @@ const Header = () => {
               >
                   <PageLinks direction='column' />
               </Menu>
-            </React.Fragment> : <PageLinks direction='row' /> }
+            </Grid> : <PageLinks direction='row' /> }
         </Grid>
       </Toolbar>
     </AppBar>
