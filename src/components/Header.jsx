@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar, Grid, Button,
-  Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Grid, Button, Typography,
+  IconButton, Menu } from '@material-ui/core';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(() => ({
@@ -28,6 +30,8 @@ const useStyles = makeStyles(() => ({
 
 const Header = () => {
   const classes = useStyles();
+  const isSmol = useMediaQuery('(max-width:600px)');
+  const [menuEl, setMenuEl] = useState(null);
 
   return (
     <AppBar position='sticky'>
@@ -42,21 +46,42 @@ const Header = () => {
               />
             </RouterLink>
           </Grid>
-          <Grid container item xs={5} direction='row' justify='space-evenly'>
-            <Button color='primary' component={RouterLink} to='/services'>
-              <Typography variant='h6' className={classes.tab}>Services</Typography>
-            </Button>
-            <Button color='primary' component={RouterLink} to='/gallery'>
-              <Typography variant='h6' className={classes.tab}>Gallery</Typography>
-            </Button>
-            <Button color='primary' component={RouterLink} to='/contact'>
-              <Typography variant='h6' className={classes.tab}>Contact</Typography>
-            </Button>
-          </Grid>
+          { isSmol ?
+            <React.Fragment>
+              <IconButton onClick={event => setMenuEl(event.currentTarget)}>
+                <MoreVertIcon />
+              </IconButton>
+              <Menu
+                anchorEl={menuEl}
+                keepMounted
+                open={Boolean(menuEl)}
+                onClose={() => setMenuEl(null)}
+              >
+                  <PageLinks direction='column' />
+              </Menu>
+            </React.Fragment> : <PageLinks direction='row' /> }
         </Grid>
       </Toolbar>
     </AppBar>
   );
 };
+
+const PageLinks = ({direction}) => {
+  const classes = useStyles();
+  return (
+    <Grid container item xs={5} direction={direction} justify='space-evenly'>
+      <Button color='primary' component={RouterLink} to='/services'>
+        <Typography variant='h6' className={classes.tab}>Services</Typography>
+      </Button>
+      <Button color='primary' component={RouterLink} to='/gallery'>
+        <Typography variant='h6' className={classes.tab}>Gallery</Typography>
+      </Button>
+      <Button color='primary' component={RouterLink} to='/contact'>
+        <Typography variant='h6' className={classes.tab}>Contact</Typography>
+      </Button>
+    </Grid>
+  );
+};
+
 
 export default Header;
