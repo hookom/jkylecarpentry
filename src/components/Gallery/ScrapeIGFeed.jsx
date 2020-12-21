@@ -9,17 +9,24 @@ const useStyles = makeStyles(() => ({
     padding: '30px 60px',
   },
   imageCard: {
+    height: 400,
+    width: 400,
+  },
+  postImage: {
     cursor: 'pointer',
+    height: 400,
+    width: 400,
   },
 }));
 
-const InstagramFeed = ({username, limit}) => {
+const ScrapeIGFeed = ({username, limit}) => {
   const classes = useStyles();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [media, setMedia] = useState([]);
 
   useEffect(() => {
-    if (username && limit) {
+    if (username && limit && media.length === 0) {
+      setLoading(true);
       fetch(`https://www.instagram.com/${username}/`)
         .then(res => res.text())
         .then(body => {
@@ -34,18 +41,18 @@ const InstagramFeed = ({username, limit}) => {
           setLoading(false);
         });
     }
-  }, [username, limit]);
+  }, [username, limit, media]);
 
   return (
     <div className={classes.container}>
       { loading ? <Loading /> :
-          <Grid container>
+          <Grid container justify='center' spacing={3}>
             {
               media.map((media, index) =>
-                <Grid item xs={12} md={6} key={index}>
+                <Grid item key={index}>
                   <Card className={classes.imageCard}>
                     <CardContent onClick={() => openLink(media.url)}>
-                      <img src={media.src} alt={media.alt}></img>
+                      <img src={media.src} className={classes.postImage} alt={media.alt}></img>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -111,4 +118,4 @@ const mapMedia = (json) => {
   }
 };
 
-export default InstagramFeed;
+export default ScrapeIGFeed;

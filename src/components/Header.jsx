@@ -57,7 +57,7 @@ const Header = () => {
                 open={Boolean(menuEl)}
                 onClose={() => setMenuEl(null)}
               >
-                  <PageLinks direction='column' />
+                  <PageLinks direction='column' closeMenu={() => setMenuEl(null)} />
               </Menu>
             </Grid> : <PageLinks direction='row' /> }
         </Grid>
@@ -66,17 +66,17 @@ const Header = () => {
   );
 };
 
-const PageLinks = ({direction}) => {
+const PageLinks = ({direction, closeMenu}) => {
   const classes = useStyles();
   return (
     <Grid container item xs={5} direction={direction} justify='space-evenly'>
-      <Button color='primary' component={RouterLink} to='/services'>
+      <Button color='primary' component={RouterLink} to='/services' onClick={closeMenu}>
         <Typography variant='h6' className={classes.tab}>Services</Typography>
       </Button>
-      <Button color='primary' component={RouterLink} to='/gallery'>
+      <Button color='primary' component={RouterLink} to='/gallery' onClick={closeMenu}>
         <Typography variant='h6' className={classes.tab}>Gallery</Typography>
       </Button>
-      <Button color='primary' component={RouterLink} to='/contact'>
+      <Button color='primary' component={RouterLink} to='/contact' onClick={closeMenu}>
         <Typography variant='h6' className={classes.tab}>Contact</Typography>
       </Button>
     </Grid>

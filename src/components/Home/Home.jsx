@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '-250px',
-    height: '300px',
+    minHeight: '300px',
   },
   text: {
     padding: '30px 30px',

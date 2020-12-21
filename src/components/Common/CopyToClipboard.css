@@ -1,0 +1,9 @@
+.copyIcon {
+    padding: 0 0 10px 10px;
+    cursor: pointer;
+}
+.copiedIndicator {
+    padding-left: 10px;
+    vertical-align: top;
+    font-style: italic;
+}

@@ -6,10 +6,12 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import { openLink } from '../../lib/utils';
+import CopyToClipboard from '../Common/CopyToClipboard';
 
 const facebookUrl = 'https://www.facebook.com/jkylecarpentry';
 const instagramUrl = 'https://www.instagram.com/jkyle_carpentry';
-const linkedInUrl = 'https://linkedin.com';
+const linkedInUrl = 'https://www.linkedin.com/in/jesse-kyle/';
+const email = 'jkylecarpentry@gmail.com';
 
 const useStyles = makeStyles(() => ({
   content: {
@@ -54,7 +56,8 @@ const Contact = () => {
       />
       <Grid item container direction='row' justify='center'>
         <AlternateEmailIcon fontSize='medium' />
-        <div className={classes.email}>jkylecarpentry@gmail.com</div>
+        <div className={classes.email}>{email}</div>
+        <CopyToClipboard target={email} />
       </Grid>
     </Grid>
   );
