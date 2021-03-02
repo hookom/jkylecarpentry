@@ -6,5 +6,5 @@
 # Deploy (from gcp console)
 * `npm i`
 * `npm run build`
-* Update API token value in `env_variables.yaml`
+* Update API token value in `app.yaml`
 * `gcloud app deploy`
