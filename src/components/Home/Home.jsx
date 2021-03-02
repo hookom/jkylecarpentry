@@ -47,7 +47,7 @@ const Home = () => {
       />
       <div className={classes.mainImage} />
       <Paper elevation={3} className={classes.infoContainer}>
-        <Typography variant='h3'>Professional Custom Carpentry</Typography>
+        <Typography variant='h4'>Professional Custom Carpentry</Typography>
         <Typography variant='body1' className={classes.text}>
           {homeText}
         </Typography>
