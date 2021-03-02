@@ -9,5 +9,3 @@ handlers:
   static_files: build/index.html
   upload: build/index.html
   secure: always
-env_variables:
-  REACT_APP_IG_TOKEN: 'target_instagram_account_api_token'

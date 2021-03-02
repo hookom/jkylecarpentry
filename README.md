@@ -1,10 +1,10 @@
 # Run Local
-* `export REACT_APP_IG_TOKEN='target_instagram_account_api_token'`
+* Update API token value in `.env`
 * `npm i`
 * `npm start`
 
 # Deploy (from gcp console)
 * `npm i`
+* Update API token value in `.env`
 * `npm run build`
-* Update API token value in `app.yaml`
 * `gcloud app deploy`
