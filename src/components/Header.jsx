@@ -70,6 +70,9 @@ const PageLinks = ({direction, closeMenu}) => {
   const classes = useStyles();
   return (
     <Grid container item xs={5} direction={direction} justify='space-evenly'>
+      <Button color='primary' component={RouterLink} to='/' onClick={closeMenu}>
+        <Typography variant='h6' className={classes.tab}>Home</Typography>
+      </Button>
       <Button color='primary' component={RouterLink} to='/services' onClick={closeMenu}>
         <Typography variant='h6' className={classes.tab}>Services</Typography>
       </Button>

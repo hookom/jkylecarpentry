@@ -1,8 +1,25 @@
 import React from 'react';
-import ScrapeIGFeed from './ScrapeIGFeed';
+import { makeStyles } from '@material-ui/core/styles';
+import InstagramFeed  from 'react-ig-feed'
+import 'react-ig-feed/dist/index.css'
+
+const useStyles = makeStyles(() => ({
+  container: {
+    width: '70%',
+    marginTop: 30,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+}));
 
 const Gallery = () => {
-  return (<ScrapeIGFeed username='jkyle_carpentry' limit={12} />);
+  const classes = useStyles();
+
+  return (
+    <div className={classes.container}>
+      <InstagramFeed token={process.env.REACT_APP_IG_TOKEN} counter='20' />
+    </div>
+  );
 }
 
 export default Gallery;

@@ -1,5 +1,6 @@
 # Run Local
 ```
+export REACT_APP_IG_TOKEN='target_instagram_account_api_token'
 npm i
 npm start
 ```

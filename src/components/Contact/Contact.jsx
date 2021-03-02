@@ -55,7 +55,7 @@ const Contact = () => {
         style={{ color: '#0077B5' }}
       />
       <Grid item container direction='row' justify='center'>
-        <AlternateEmailIcon fontSize='medium' />
+        <AlternateEmailIcon />
         <div className={classes.email}>{email}</div>
         <CopyToClipboard target={email} />
       </Grid>
