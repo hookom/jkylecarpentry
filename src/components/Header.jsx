@@ -19,6 +19,11 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     paddingTop: '5px',
     paddingBottom: '5px',
+    opacity: 0,
+    transition: 'opacity 0.5s',
+  },
+  logoVisible: {
+    opacity: 1,
   },
   tab: {
     color: '#000',
@@ -32,6 +37,7 @@ const Header = () => {
   const classes = useStyles();
   const isSmol = useMediaQuery('(max-width:600px)');
   const [menuEl, setMenuEl] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <AppBar position='sticky'>
@@ -42,7 +48,8 @@ const Header = () => {
               <img
                 src={logo}
                 alt='logo'
-                className={classes.siteLogo}
+                className={`${classes.siteLogo} ${loaded ? classes.logoVisible : null}`}
+                onLoad={() => setLoaded(true)}
               />
             </RouterLink>
           </Grid>

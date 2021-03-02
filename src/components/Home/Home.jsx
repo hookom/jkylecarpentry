@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography } from '@material-ui/core';
 import carpentryBackdrop from '../../assets/carpentryBackdrop.jpg';
@@ -6,13 +6,16 @@ import { homeText } from '../../lib/constants';
 
 const useStyles = makeStyles(() => ({
   mainImage: {
+    position: 'absolute',
+    zIndex: -1,
+    top: 140,
+    left: '10%',
     height: 450,
-    backgroundImage: `url('${carpentryBackdrop}')`,
-    backgroundSize: '100%',
-    backgroundPosition: 'center',
     width: '80%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    opacity: 0,
+    transition: 'opacity 0.5s',
+  },
+  bgVisible: {
     opacity: 0.3,
   },
   infoContainer: {
@@ -22,7 +25,7 @@ const useStyles = makeStyles(() => ({
     width: '60%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: -250,
+    marginTop: 250,
     minHeight: 300,
   },
   text: {
@@ -32,9 +35,16 @@ const useStyles = makeStyles(() => ({
 
 const Home = () => {
   const classes = useStyles();
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <React.Fragment>
+      <img
+        src={carpentryBackdrop}
+        alt='bg'
+        className={`${classes.mainImage} ${loaded ? classes.bgVisible : null}`}
+        onLoad={() => setLoaded(true)}
+      />
       <div className={classes.mainImage} />
       <Paper elevation={3} className={classes.infoContainer}>
         <Typography variant='h3'>Professional Custom Carpentry</Typography>

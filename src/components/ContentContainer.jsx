@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Home from './Home/Home';
 import Contact from './Contact/Contact';
 import Gallery from './Gallery/Gallery';
+import Services from './Services/Services';
 
 const useStyles = makeStyles(() => ({
   content: {
@@ -23,7 +24,7 @@ const SentinelContainer = () => {
         </Route>
 
         <Route exact path='/services'>
-          <div>services</div>
+          <Services />
         </Route>
 
         <Route exact path='/gallery'>
